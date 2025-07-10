@@ -1,0 +1,31 @@
+---
+export interface Props {
+    // When using `layout` in MDX frontmatter, Astro passes the
+    // entire frontmatter object as a prop named `frontmatter`.
+    frontmatter: {
+        title: string;
+        description: string;
+        // Add other frontmatter properties if you use them (e.g., date, tags)
+        [key: string]: any; // Allows for any other properties
+    };
+}
+
+const { frontmatter } = Astro.props;
+
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{frontmatter.title}</title>
+        <meta name="description" content={frontmatter.description} />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
