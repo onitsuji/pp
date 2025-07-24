@@ -61,7 +61,7 @@ export default function Portfolio() {
             <div className="relative">
               <Image
                 src="/placeholder.svg?height=80&width=80"
-                alt="Justin O'Connell"
+                alt="justin"
                 width={80}
                 height={80}
                 className="rounded-full border-2 border-gray-700"
