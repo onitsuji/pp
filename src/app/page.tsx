@@ -111,7 +111,7 @@ export default function Portfolio() {
         {/* Description */}
         <div className="mb-16">
           <p className="text-lg text-gray-300 leading-relaxed">
-            I'm a fullstack developer passionate about building modern web
+            I&apos;m a fullstack developer passionate about building modern web
             applications, creating seamless user experiences and scalable
             backend solutions while sharing my knowledge through tutorials and
             project walkthroughs.
@@ -122,7 +122,7 @@ export default function Portfolio() {
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
             <h2 className="text-xl font-bold text-white">
-              What I've built recently
+              What I&apos;ve built recently
             </h2>
             <div className="text-gray-400">🔧</div>
           </div>
