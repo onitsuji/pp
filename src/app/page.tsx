@@ -1,103 +1,193 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Mail,
+  Youtube,
+  Twitter,
+  Github,
+  ExternalLink,
+  FileText,
+} from "lucide-react";
 
-export default function Home() {
+export default function Portfolio() {
+  const copyEmail = () => {
+    navigator.clipboard.writeText("justin@example.com");
+    toast.message("Copied to clipboard");
+  };
+
+  const projects = [
+    {
+      title: "E-commerce Platform",
+      description:
+        "A full-stack e-commerce solution built with Next.js, featuring real-time inventory management and secure payment processing.",
+      caseStudyUrl: "/case-study/ecommerce",
+      githubUrl: "https://github.com/justin/ecommerce-platform",
+      liveUrl: "https://ecommerce-demo.vercel.app",
+    },
+    {
+      title: "Task Management App",
+      description:
+        "A collaborative project management tool with real-time updates, built using React, Node.js, and WebSocket technology.",
+      caseStudyUrl: "/case-study/task-manager",
+      githubUrl: "https://github.com/justin/task-manager",
+      liveUrl: "https://taskmanager-demo.vercel.app",
+    },
+    {
+      title: "AI Content Generator",
+      description:
+        "An intelligent content creation platform leveraging OpenAI's API to generate marketing copy and blog posts.",
+      caseStudyUrl: "/case-study/ai-content",
+      githubUrl: "https://github.com/justin/ai-content-generator",
+      liveUrl: "https://ai-content-demo.vercel.app",
+    },
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-black text-white">
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        {/* Header Section */}
+        <div className="flex items-start justify-between mb-12">
+          <div className="flex items-center gap-6">
+            <div className="relative">
+              <Image
+                src="/placeholder.svg?height=80&width=80"
+                alt="Justin O'Connell"
+                width={80}
+                height={80}
+                className="rounded-full border-2 border-gray-700"
+              />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-white mb-1">
+                Justin O&apos;Connell
+              </h1>
+              <p className="text-gray-400">Fullstack Developer</p>
+            </div>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-400 hover:text-white"
+            >
+              <Youtube className="w-5 h-5" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-400 hover:text-white"
+              onClick={copyEmail}
+            >
+              <Mail className="w-5 h-5" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-400 hover:text-white"
+            >
+              <Twitter className="w-5 h-5" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-400 hover:text-white"
+            >
+              <Github className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Description */}
+        <div className="mb-16">
+          <p className="text-lg text-gray-300 leading-relaxed">
+            I'm a fullstack developer passionate about building modern web
+            applications, creating seamless user experiences and scalable
+            backend solutions while sharing my knowledge through tutorials and
+            project walkthroughs.
+          </p>
+        </div>
+
+        {/* Projects Section */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <h2 className="text-xl font-bold text-white">
+              What I've built recently
+            </h2>
+            <div className="text-gray-400">🔧</div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-1">
+            {projects.map((project, index) => (
+              <Card
+                key={index}
+                className="bg-gray-900 border-gray-800 hover:border-gray-700 transition-colors"
+              >
+                <CardHeader>
+                  <CardTitle className="text-white text-lg">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-400 text-sm leading-relaxed">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href={project.caseStudyUrl}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 bg-transparent"
+                      >
+                        <FileText className="w-4 h-4 mr-2" />
+                        Case Study
+                      </Button>
+                    </Link>
+                    <Link
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 bg-transparent"
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        GitHub
+                      </Button>
+                    </Link>
+                    <Link
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 bg-transparent"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Site
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
